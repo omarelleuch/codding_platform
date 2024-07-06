@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CodeChallenge Platform</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'signup.css' %}" type="text/css" media="all" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CodeChallenge</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Challenges</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="signup-container">
+        <div class="signup-form">
+            <h2>Register with:</h2>
+            <div class="social-buttons">
+                <button class="google-btn">
+                    <img src="{% static 'google.png' %}" alt="Google Icon">
+                    Google
+                </button>
+                <button class="github-btn">
+                    <img src="{% static 'github.png' %}" alt="GitHub Icon">
+                    Github
+                </button>
+                <button class="gitlab-btn">
+                    <img src="{% static 'gitlab.png' %}" alt="Gitlab Icon">
+                    Gitlab
+                </button>
+            </div>
+            <div class="separator">Or</div>
+            <form action="#" method="post">
+                <div class="input-group">
+                    <input type="text" name="first_name" placeholder="First Name" required>
+                    <input type="text" name="last_name" placeholder="Last Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+            <p class="terms">By creating an account, you agree to the <a href="#">Terms of Service</a>. We’ll occasionally send you account-related emails.</p>
+            <p class="login">Already have an account? <a href="#">Login</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 CodeChallenge. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,188 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    color: #fff;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header nav ul li {
+    margin-left: 1rem;
+    
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    display: inline-block;
+}
+
+header nav ul li a:hover {
+    background-color: #1abc9c;
+    border-radius: 5px;
+}
+
+.signin-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.signin-form {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    color: #fff;
+}
+
+.forgot-password {
+    text-align: right;
+    display: inline-block; /* Ensure it takes up the full width */
+    
+}
+
+.password-label {
+    margin-right: 12rem; /* Adjust the spacing as needed */
+}
+
+.signin-form h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+/* In your CSS (styles.css) */
+.remember-me {
+    display: flex;
+    align-items: center; /* Vertically center the checkbox and label */
+    margin-bottom: 0.5rem;
+}
+
+.remember-me input[type="checkbox"] {
+    display: none; /* Hide the default checkbox input */
+}
+
+/* Style the custom checkbox */
+.remember-me label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px; /* Add spacing between the checkbox and label */
+    transition: background-color 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+/* Style the custom checkbox when checked */
+.remember-me input[type="checkbox"]:checked + label::before {
+    background-color: #1abc9c; /* Change to your desired color */
+    border-color: #1abc9c;
+    box-shadow: 0px 0px 6px 0px rgba(239, 139, 4, 0.3);
+}
+
+
+.separator {
+    text-align: center;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.separator:before,
+.separator:after {
+    content: "";
+    display: block;
+    width: 45%;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+}
+
+.signup-link{
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    background-color: #1abc9c;
+    color: #000;
+    border: none;
+    padding: 0.75rem;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.terms, .login {
+    font-size: 0.75rem;
+    text-align: center;
+    margin: 1rem 0 0;
+}
+
+.terms a, .login a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}

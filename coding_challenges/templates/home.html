@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeChallenge Platform</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="all" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CodeChallenge</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Challenges</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="signin/">Login</a></li>
+                <li><a href="signup/">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to CodeChallenge</h1>
+            <p>Enhance your coding skills with our interactive challenges.</p>
+            <a href="#" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <h2>Interactive Coding Challenges</h2>
+            <p>Solve problems and see real-time feedback on your code.</p>
+        </div>
+        <div class="feature">
+            <h2>Track Your Progress</h2>
+            <p>Keep track of your achievements and see how you rank against others.</p>
+        </div>
+        <div class="feature">
+            <h2>Community Support</h2>
+            <p>Join a community of coders and get help when you're stuck.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 CodeChallenge. All rights reserved.</p>
+    </footer>
+</body>
+</html>
