@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attempt Challenge - {{ challenge.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'challenges.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CodeChallenge</div>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'challenges' %}">Challenges</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="challenge-details">
+            <h1>{{ challenge.title }}</h1>
+            <p>{{ challenge.text }}</p>
+            <span class="difficulty {{ challenge.difficulty|lower }}">{{ challenge.difficulty }}</span>
+            <p><strong>Topic Tags:</strong> {{ challenge.topic_tags }}</p>
+            <p><strong>Success Rate:</strong> {{ challenge.success_rate }}</p>
+            <p><strong>Total Submissions:</strong> {{ challenge.total_submission }}</p>
+            <p><strong>Total Accepted:</strong> {{ challenge.total_accepted }}</p>
+            <p><strong>Likes:</strong> {{ challenge.likes }}</p>
+            <p><strong>Dislikes:</strong> {{ challenge.dislikes }}</p>
+            {% if challenge.hints %}
+                <p><strong>Hints:</strong> {{ challenge.hints }}</p>
+            {% endif %}
+            
+            <!-- Attempt section -->
+            <div class="attempt-section">
+                <h2>Attempt the Challenge</h2>
+                <!-- Add your form or instructions for the challenge attempt here -->
+                <p>Instructions or form for attempting the challenge go here.</p>
+            </div>
+        </div>
+
+        <!-- Code editor section -->
+        <div class="code-editor">
+            <h2>Code Editor</h2>
+            <form action="#" method="post">
+                {% csrf_token %}
+                <textarea name="code" id="code" rows="10" placeholder="Enter your code here"></textarea>
+                <br>
+                <button type="submit">Submit Code</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 CodeChallenge. All rights reserved.</p>
+    </footer>
+</body>
+</html>

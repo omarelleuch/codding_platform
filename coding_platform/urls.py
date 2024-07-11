@@ -18,11 +18,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
+from coding_challenges import views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include ('coding_challenges.urls')),
-    path('signup/', include('coding_challenges.urls')),  
-    path('signin/', include('coding_challenges.urls')),  
+     path('login/', views.login, name='login'),  
+    path('signup/', views.signup, name='signup'), 
+    path('challenges/', views.challenges, name='challenges'),
 ]

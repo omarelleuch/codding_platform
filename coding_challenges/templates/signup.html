@@ -12,11 +12,11 @@
         <nav>
             <div class="logo">CodeChallenge</div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Challenges</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'challenges' %}">Challenges</a></li>
                 <li><a href="#">Leaderboard</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
             </ul>
         </nav>
     </header>
@@ -39,7 +39,8 @@
                 </button>
             </div>
             <div class="separator">Or</div>
-            <form action="#" method="post">
+            <form action="{% url 'signup' %}" method="post">
+                {% csrf_token %}
                 <div class="input-group">
                     <input type="text" name="first_name" placeholder="First Name" required>
                     <input type="text" name="last_name" placeholder="Last Name" required>
@@ -56,7 +57,7 @@
                 <button type="submit" class="submit-btn">Sign Up</button>
             </form>
             <p class="terms">By creating an account, you agree to the <a href="#">Terms of Service</a>. We’ll occasionally send you account-related emails.</p>
-            <p class="login">Already have an account? <a href="#">Login</a></p>
+            <p class="login">Already have an account? <a href="{% url 'login' %}">Login</a></p>
         </div>
     </div>
 

@@ -1,19 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
-
-
-
-# coding_challenges/views.py
-
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from .models import Challenge
 
 def home(request):
     return render(request, 'home.html')
@@ -29,13 +17,21 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
-def signin(request):
+def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
-            # Redirect after successful signin
+            # Redirect after successful login
             return redirect('/')
     else:
         form = AuthenticationForm()
-    return render(request, 'signin.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
+
+def challenges(request):
+    challenges = Challenge.objects.all()  # Retrieve all challenges from the database
+    return render(request, 'challenges.html', {'challenges': challenges})
+
+def attempt_challenge(request, challenge_id):
+    challenge = get_object_or_404(Challenge, question_id=challenge_id)
+    return render(request, 'attempt_challenge.html', {'challenge': challenge})

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges - CodeChallenge Platform</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'challenges.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CodeChallenge</div>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'challenges' %}">Challenges</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+     <div class="challenges-container">
+        <h1>Challenges</h1>
+        <div class="challenge-list">
+            {% for challenge in challenges %}
+            <div class="challenge-item">
+                <h2>{{ challenge.title }}</h2>
+                <p>{{ challenge.text }}</p>
+                <span class="difficulty {{ challenge.difficulty|lower }}">{{ challenge.difficulty }}</span>
+                <a href="{% url 'attempt_challenge' challenge_id=challenge.question_id %}" class="attempt-btn">Attempt Challenge</a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 CodeChallenge. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+

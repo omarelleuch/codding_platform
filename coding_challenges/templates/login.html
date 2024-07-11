@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - CodeChallenge Platform</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'signin.css' %}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{% static 'login.css' %}" type="text/css" media="all" />
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">CodeChallenge</div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Challenges</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'challenges' %}">Challenges</a></li>
                 <li><a href="#">Leaderboard</a></li>
-                <li><a href="signin.html">Login</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
             </ul>
         </nav>
     </header>

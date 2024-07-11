@@ -9,9 +9,9 @@ body {
 }
 
 header {
-    background-color: #1a1a1a;
-    padding: 1rem;
+    background: #333;
     color: #fff;
+    padding: 1rem 0;
 }
 
 header .logo {
@@ -73,7 +73,7 @@ header nav ul li a:hover {
 .forgot-password {
     text-align: right;
     display: inline-block; /* Ensure it takes up the full width */
-    
+    color: #1abc9c;
 }
 
 .password-label {

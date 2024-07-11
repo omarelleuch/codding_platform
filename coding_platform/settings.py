@@ -78,10 +78,15 @@ WSGI_APPLICATION = 'coding_platform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',  # Your database name
+        'USER': 'postgres',  # Your database username
+        'PASSWORD': 'Omaristired.2',  # Your database password
+        'HOST': 'localhost',  # Your database host
+        'PORT': '5432',  # Your database port
     }
 }
+
 
 
 # Password validation
@@ -119,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [BASE_DIR / "coding_challenges/static"]
 
 
 # Default primary key field type
