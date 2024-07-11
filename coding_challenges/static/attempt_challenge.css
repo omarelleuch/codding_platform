@@ -1,76 +1,81 @@
 /* Reset default margin and padding */
-html, body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
-}
-
-/* Set body styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: flex-start; /* Align content to the top vertically */
-    min-height: 100vh; /* Ensure full viewport height */
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden; /* Prevent scroll bars */
 }
 
-/* Header styles */
 header {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 0;
-    width: 100%;
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    width: 100%; /* Full width */
+    box-sizing: border-box;
 }
 
-header nav {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header nav .logo {
+header .logo {
     font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
 }
 
 header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    list-style-type: none;
+    justify-content: flex-end;
 }
 
 header nav ul li {
-    margin-right: 10px;
+    margin-left: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 header nav ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    padding: 10px;
+    padding: 1rem 1rem;
+    display: inline-block;
 }
 
 header nav ul li a:hover {
-    background-color: #0056b3;
+    background-color: #1abc9c;
     border-radius: 5px;
 }
 
 /* Main content container */
 .container {
     display: flex;
-    max-width: 960px;
     width: 100%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    flex-grow: 1; /* Allow container to grow */
+    overflow: hidden; /* Prevent scroll bars */
+    box-sizing: border-box;
 }
 
 /* Challenge details section */
 .challenge-details {
     flex: 1;
     padding-right: 20px;
+    margin-left: 1%;
+    max-height: calc(100vh - 100px); /* Adjust height based on viewport */
+    overflow-y: auto; /* Enable scrolling */
+    resize: none; /* Disable resizing */
+    box-sizing: border-box;
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .challenge-details h1 {
@@ -103,20 +108,33 @@ header nav ul li a:hover {
     background-color: #dc3545;
 }
 
+/* Resize handle */
+.resize-handle {
+    width: 5px;
+    cursor: ew-resize;
+    background-color: #ddd;
+    flex-shrink: 0;
+}
+
 /* Code editor section */
 .code-editor {
     flex: 1;
     padding-left: 20px;
+    margin-right: 2%;
+}
+
+.code-editor h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .code-editor textarea {
     width: 100%;
-    min-height: 300px;
+    height: 300px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    resize: vertical; /* Allow vertical resizing */
-    right: auto;
+    resize: none; /* Disable resizing */
 }
 
 /* Attempt section */
@@ -135,12 +153,11 @@ header nav ul li a:hover {
 }
 
 /* Footer styles */
-.footer {
-    background-color: #007bff;
-    color: white;
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 1rem;
     width: 100%;
-    position: fixed;
-    bottom: 0;
+    box-sizing: border-box;
 }
