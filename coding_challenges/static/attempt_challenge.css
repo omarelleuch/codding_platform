@@ -116,19 +116,59 @@ header nav ul li a:hover {
     flex-shrink: 0;
 }
 
-/* Code editor section */
+/* CSS for Code Editor */
 .code-editor {
     flex: 1;
-    padding-left: 20px;
-    margin-right: 2%;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.code-editor h2 {
-    font-size: 1.5rem;
+.editor-top-bar {
+    display: flex;
+    align-items: center;
     margin-bottom: 10px;
 }
 
-.code-editor textarea {
+.editor-top-bar label {
+    margin-right: 10px;
+}
+
+.editor-top-bar select, .editor-top-bar button {
+    margin-right: 10px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.editor-top-bar select:hover, .editor-top-bar button:hover {
+    background-color: #f0f0f0;
+}
+
+.editor-top-bar button {
+    background-color: #1abc9c;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.editor-top-bar button:hover {
+    background-color: #148f77;
+}
+
+.editor-top-bar button:active {
+    background-color: #0e6656;
+}
+
+.editor-wrapper {
+    position: relative;
+}
+
+#code-editor {
     width: 100%;
     height: 300px;
     padding: 10px;
@@ -136,6 +176,39 @@ header nav ul li a:hover {
     border-radius: 5px;
     resize: none; /* Disable resizing */
 }
+
+#editor-output {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 50px;
+    background-color: #f9f9f9;
+    white-space: pre-wrap;
+    font-family: monospace;
+    overflow-wrap: break-word;
+}
+
+
+/* CSS for Submit Button */
+.code-editor button {
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.code-editor button:hover {
+    background-color: #148f77;
+}
+
+.code-editor button:active {
+    background-color: #0e6656;
+}
+
 
 /* Attempt section */
 .attempt-section {
