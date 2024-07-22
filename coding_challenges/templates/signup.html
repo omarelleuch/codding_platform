@@ -15,7 +15,7 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'challenges' %}">Challenges</a></li>
                 <li><a href="#">Leaderboard</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'login_view' %}">Login</a></li>
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
             </ul>
         </nav>
@@ -57,7 +57,7 @@
                 <button type="submit" class="submit-btn">Sign Up</button>
             </form>
             <p class="terms">By creating an account, you agree to the <a href="#">Terms of Service</a>. We’ll occasionally send you account-related emails.</p>
-            <p class="login">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            <p class="login">Already have an account? <a href="{% url 'login_view' %}">Login</a></p>
         </div>
     </div>
 

@@ -23,7 +23,8 @@ from coding_challenges import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include ('coding_challenges.urls')),
-     path('login/', views.login, name='login'),  
+    path('login/', views.login_view, name='login_view'),  
     path('signup/', views.signup, name='signup'), 
     path('challenges/', views.challenges, name='challenges'),
+    path('execute-code/', views.execute_code, name='execute_code'),
 ]

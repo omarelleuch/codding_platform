@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <title>Attempt Challenge - {{ challenge.title }}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'attempt_challenge.css' %}">
-    <link rel="stylesheet" href="{% static 'codemirror/lib/codemirror.css' %}">
-    <link rel="stylesheet" href="{% static 'codemirror/theme/material-darker.css' %}">
+
+    <!-- CodeMirror Styles and Scripts -->
+    <link href="{% static 'codemirror/lib/codemirror.css' %}" rel="stylesheet"/>
     <script src="{% static 'codemirror/lib/codemirror.js' %}"></script>
     <script src="{% static 'codemirror/mode/javascript/javascript.js' %}"></script>
-    <script src="{% static 'highlight.pack.js' %}"></script>
+    <script src="{% static 'codemirror/mode/python/python.js' %}"></script>
+    <script src="{% static 'codemirror/mode/clike/clike.js' %}"></script>
+    <script src="{% static 'codemirror/addon/edit/closetag.js' %}"></script>
+    <script src="{% static 'codemirror/addon/edit/closebrackets.js' %}"></script>
+    <link href="{% static 'codemirror/theme/dracula.css' %}" rel="stylesheet"/>
 </head>
 <body>
     <header>
@@ -20,7 +26,7 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'challenges' %}">Challenges</a></li>
                 <li><a href="#">Leaderboard</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'login_view' %}">Login</a></li>
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
             </ul>
         </nav>
@@ -44,7 +50,6 @@
             <!-- Attempt section -->
             <div class="attempt-section">
                 <h2>Attempt the Challenge</h2>
-                <!-- Add your form or instructions for the challenge attempt here -->
                 <p>Instructions or form for attempting the challenge go here.</p>
             </div>
         </div>
@@ -57,99 +62,20 @@
             <div class="editor-top-bar">
                 <label for="language-select">Language:</label>
                 <select id="language-select">
-                    <option value="javascript">JavaScript</option>
-                    <option value="python">Python</option>
-                    <option value="java">Java</option>
+                    <option value="71">Python</option>
+                    <option value="63">JavaScript</option>
+                    <option value="62">Java</option>
                     <!-- Add more languages as needed -->
                 </select>
                 <button id="run-btn">Run Code</button>
             </div>
             <div class="editor-wrapper">
                 <textarea id="code-editor" name="code" rows="10" placeholder="Enter your code here"></textarea>
-                <div id="editor-output" class="editor-output">
-                    <!-- Output area for displaying results -->
-                </div>
+                <div id="editor-output" class="output"></div>
             </div>
-            <button id="submit-btn" type="submit">Submit Code</button>
-            <span id="submit-msg"></span> <!-- Optional: Display submission status/message here -->
         </div>
-
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 CodeChallenge. All rights reserved.</p>
-    </footer>
-
     <script src="{% static 'resize.js' %}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // Initialize CodeMirror
-            window.codeMirrorInstance = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
-                lineNumbers: true,
-                mode: 'javascript',  // Default mode
-                theme: 'material-darker',
-                autoCloseBrackets: true,
-                matchBrackets: true,
-                tabSize: 4,
-                indentUnit: 4,
-                indentWithTabs: true,
-            });
-
-            // Syntax highlighting based on language selection
-            const languageSelect = document.getElementById('language-select');
-            languageSelect.addEventListener('change', (e) => {
-                const selectedLanguage = e.target.value;
-                const mode = selectedLanguage === 'python' ? 'python' : 'javascript'; // Adjust for other languages
-                CodeMirror.autoLoadMode(window.codeMirrorInstance, mode);
-                window.codeMirrorInstance.setOption('mode', mode);
-            });
-
-            // Run button functionality (example)
-            const runBtn = document.getElementById('run-btn');
-            runBtn.addEventListener('click', async () => {
-                const code = window.codeMirrorInstance.getValue();
-                try {
-                    const result = await executeCode(code); // Implement executeCode function for running code
-                    document.getElementById('editor-output').textContent = result;
-                } catch (error) {
-                    console.error('Error running code:', error);
-                    document.getElementById('editor-output').textContent = 'An error occurred while running the code.';
-                }
-            });
-
-            // Submit button functionality (example)
-            const submitBtn = document.getElementById('submit-btn');
-            submitBtn.addEventListener('click', async (e) => {
-                e.preventDefault();
-                
-                // Example: Simulate loading state
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Submitting...';
-
-                // Example: Perform actual form submission via AJAX
-                const formData = new FormData(document.getElementById('code-form'));
-                try {
-                    const response = await fetch('/submit-code', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    if (response.ok) {
-                        submitMsg.textContent = 'Code submitted successfully!';
-                        submitMsg.style.color = 'green';
-                    } else {
-                        submitMsg.textContent = 'Submission failed. Please try again.';
-                        submitMsg.style.color = 'red';
-                    }
-                } catch (error) {
-                    console.error('Error submitting code:', error);
-                    submitMsg.textContent = 'An error occurred. Please try again later.';
-                    submitMsg.style.color = 'red';
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit Code';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
