@@ -16,6 +16,7 @@ class Challenge(models.Model):
     hints = models.TextField(null=True, blank=True)
     similar_questions_ids = models.CharField(max_length=255, null=True, blank=True)
     similar_questions_text = models.TextField(null=True, blank=True)
+    test_cases = models.JSONField()
 
     def __str__(self):
         return self.title

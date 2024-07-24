@@ -189,6 +189,34 @@ header nav ul li a:hover {
     overflow-wrap: break-word;
 }
 
+.test-case {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.test-case-header {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.test-case-content p {
+    margin: 5px 0;
+}
+
+.overall-status {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.test-case-content {
+    margin-top: 10px;
+}
+
+
 
 /* CSS for Submit Button */
 .code-editor button {

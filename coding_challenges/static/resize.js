@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const challengeId = window.location.pathname.split('/')[2];  // Extract challenge_id from URL
                 const result = await executeCode(code, challengeId); // Pass challengeId to executeCode function
-                document.getElementById('editor-output').textContent = JSON.stringify(result, null, 2);
+                displayResults(result); 
             } catch (error) {
                 console.error('Error running code:', error);
                 document.getElementById('editor-output').textContent = 'An error occurred while running the code.';
@@ -92,7 +92,7 @@ async function executeCode(code, challengeId) {
     const languageId = document.getElementById('language-select').value;
 
     try {
-        const response = await fetch(`execute_code/`, {
+        const response = await fetch('execute_code/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -108,19 +108,59 @@ async function executeCode(code, challengeId) {
         console.log('Raw response text:', text);
 
         // Check if response is valid JSON
-        let result;
+        let resultArray;
         try {
-            result = JSON.parse(text);
+            resultArray = JSON.parse(text); // Assuming the response is JSON array
         } catch (e) {
             console.error('Failed to parse JSON:', e);
-            return 'An error occurred while parsing the response.';
+            return { error: 'An error occurred while parsing the response.' };
         }
 
-        console.log('Parsed response:', result);
-
-        return result.stdout || result.stderr || 'No output';
+        console.log('Parsed response:', resultArray);
+        return resultArray;
     } catch (error) {
         console.error('Error running code:', error);
-        return 'An error occurred while running the code.';
+        return { error: 'An error occurred while running the code.' };
     }
+}
+
+function displayResults(result) {
+    const output = document.getElementById('editor-output');
+    output.innerHTML = '';  // Clear previous content
+
+    // Handle cases where there's an error in the result
+    if (result.error) {
+        output.textContent = result.error;
+        return;
+    }
+
+    // Check if result contains test case results
+    if (result.results && Array.isArray(result.results)) {
+        result.results.forEach((testCase, index) => {
+            const testCaseElement = document.createElement('div');
+            testCaseElement.className = 'test-case';
+
+            testCaseElement.innerHTML = `
+                <div class="test-case-header">
+                    <h3>Test Case ${index + 1}</h3>
+                </div>
+                <div class="test-case-content">
+                    <p><strong>Input:</strong> <pre>${testCase.input}</pre></p>
+                    <p><strong>Expected Output:</strong> <pre>${testCase.expected_output}</pre></p>
+                    <p><strong>Actual Output:</strong> <pre>${testCase.actual_output || 'No output'}</pre></p>
+                    <p><strong>Status:</strong> <span class="${testCase.passed ? 'test-passed' : 'test-failed'}">${testCase.passed ? 'Passed' : 'Failed'}</span></p>
+                </div>
+            `;
+            output.appendChild(testCaseElement);
+        });
+    } else {
+        output.textContent = 'No test case results found.';
+    }
+
+    // Display overall status
+    const overallStatus = document.createElement('div');
+    overallStatus.className = 'overall-status';
+    overallStatus.textContent = result.all_passed ? 'All test cases passed!' : 'Some test cases failed.';
+    overallStatus.classList.add(result.all_passed ? 'status-pass' : 'status-fail');
+    output.appendChild(overallStatus);
 }

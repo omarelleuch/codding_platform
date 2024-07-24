@@ -52,31 +52,52 @@ def execute_code(request, challenge_id):
             code = data.get('code')
             language_id = data.get('language_id')
 
-            conn = http.client.HTTPSConnection("judge0-ce.p.rapidapi.com")
+            challenge = get_object_or_404(Challenge, question_id=challenge_id)
+            test_cases = challenge.test_cases
 
-            payload = json.dumps({
-                "source_code": code,
-                "language_id": language_id,
-                "stdin": ""
-            })
-            print("language_id: ", language_id)
+            results = []
 
-            headers = {
-                'x-rapidapi-key': "1637d65cfdmshe6ac80fc81e85e8p1d29ebjsn960137744dd4",
-                'x-rapidapi-host': "judge0-ce.p.rapidapi.com",
-                'Content-Type': "application/json"
-            }
+            for test_case in test_cases:
+                input_data = test_case['input']
+                expected_output = test_case['output']
 
-            conn.request("POST", "/submissions?base64_encoded=true&wait=false&fields=*", payload, headers)
-            response = conn.getresponse()
-            response_data = response.read().decode("utf-8")
+                conn = http.client.HTTPSConnection("judge0-ce.p.rapidapi.com")
+
+                payload = json.dumps({
+                    "source_code": code,
+                    "language_id": language_id,
+                    "stdin": input_data
+                })
+
+                headers = {
+                    'x-rapidapi-key': "1637d65cfdmshe6ac80fc81e85e8p1d29ebjsn960137744dd4",
+                    'x-rapidapi-host': "judge0-ce.p.rapidapi.com",
+                    'Content-Type': "application/json"
+                }
+
+                conn.request("POST", "/submissions?base64_encoded=true&wait=false&fields=*", payload, headers)
+                response = conn.getresponse()
+                response_data = response.read().decode("utf-8")
+                conn.close()
+
+                result = json.loads(response_data)
+                actual_output = result.get('stdout', '').strip()
+                if not actual_output:
+                    actual_output = result.get('stderr', '').strip()
+
+                passed = actual_output == expected_output
+
+                results.append({
+                    'input': input_data,
+                    'expected_output': expected_output,
+                    'actual_output': actual_output,
+                    'passed': passed
+                })
+
+            all_passed = all(result['passed'] for result in results)
+            print("Response data:", response_data)
             
-            conn.close()
-            
-
-            # Parse JSON response
-            result = json.loads(response_data)
-            return JsonResponse(result)
+            return JsonResponse({'results': results, 'all_passed': all_passed})
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
