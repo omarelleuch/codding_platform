@@ -15,10 +15,10 @@ A coding platform where users can solve a variety of programming challenges to i
 
 ## Technologies
 
-- **Editor** - CodeMirror
-- **Compiler** - Judge0
+- **[Editor - CodeMirror](https://codemirror.net/)** - CodeMirror is a versatile text editor implemented in JavaScript for the browser.
+- **[Compiler - Judge0](https://judge0.com/)** - Judge0 is an open-source online code execution system.
+- **[Django](https://www.djangoproject.com/)** - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
+- **[PostgreSQL](https://www.postgresql.org/)** - PostgreSQL is an advanced open-source relational database.
 - **HTML** - Standard markup language for creating web pages
 - **CSS** - Style sheet language
 - **JavaScript** - Programming language that gives web pages interactive elements
-- **Django** - High-level Python web framework
-- **PostgreSQL** - Advanced open-source relational database
