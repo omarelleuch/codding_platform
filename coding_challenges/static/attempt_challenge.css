@@ -187,6 +187,10 @@ header nav ul li a:hover {
     white-space: pre-wrap;
     font-family: monospace;
     overflow-wrap: break-word;
+    max-height: 400px !important; /* Adjust as needed */
+    overflow-y: auto !important;
+    border: 1px solid #ddd !important;
+    padding: 10px !important;
 }
 
 .test-case {
