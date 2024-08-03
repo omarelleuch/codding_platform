@@ -11,3 +11,14 @@ A coding platform where users can solve a variety of programming challenges to i
 <img src="https://github.com/user-attachments/assets/5ed335a6-3531-46e4-966a-0596dc45870d" width="50" height="50" alt="Django" style="margin-right: 20px;">
 <img src="https://github.com/user-attachments/assets/c168e726-8900-45ff-b32a-3ece8e3209ed" width="50" height="50" alt="Database" style="margin-right: 20px;">
 <img src="https://github.com/user-attachments/assets/9ae39c57-9d78-492e-8185-5143b9a2383e" width="50" height="50" alt="Icon">
+
+
+## Technologies
+
+- **Editor** - CodeMirror
+- **Compiler** - Judge0
+- **HTML** - Standard markup language for creating web pages
+- **CSS** - Style sheet language
+- **JavaScript** - Programming language that gives web pages interactive elements
+- **Django** - High-level Python web framework
+- **PostgreSQL** - Advanced open-source relational database
