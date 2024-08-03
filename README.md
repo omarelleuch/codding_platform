@@ -22,3 +22,13 @@ A coding platform where users can solve a variety of programming challenges to i
 - **HTML** - Standard markup language for creating web pages
 - **CSS** - Style sheet language
 - **JavaScript** - Programming language that gives web pages interactive elements
+
+
+## Key Features
+
+- **CodeMirror Integration**: Provides a powerful and flexible text editor for code with syntax highlighting and more.
+- **Judge0 Compiler**: Supports running and testing code in various programming languages online.
+- **Django Framework**: Offers a robust and secure web framework with built-in admin interface and ORM.
+- **PostgreSQL Database**: Ensures reliable and advanced database management with support for complex queries and transactions.
+- **Interactive UI**: Enables dynamic and interactive elements on the web pages with JavaScript.
+- **Styling**: Allows for customizable and responsive design with CSS.
